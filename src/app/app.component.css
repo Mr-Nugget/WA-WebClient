@@ -1,7 +1,12 @@
-header{
+header {
     height: 100px;
-    background-color: burlywood;
+    background-color: #8C2003;
     font-size: 50px;
-    color: crimson;
+    color: white;
     text-align: center;
+    -moz-box-shadow: 0px -4px 12px 0px #656565;
+    -webkit-box-shadow: 0px -4px 12px 0px #656565;
+    -o-box-shadow: 0px -4px 12px 0px #656565;
+    box-shadow: 0px -4px 12px 0px #656565;
+    border-bottom: solid 1.5px #2b2b2b;
 }
