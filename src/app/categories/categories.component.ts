@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -10,7 +11,7 @@ export class CategoriesComponent implements OnInit {
 
   categoriesList;
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private router :Router) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategories()
@@ -19,6 +20,11 @@ export class CategoriesComponent implements OnInit {
       }).catch((error) => {
         console.error(error);
       })
+  }
+
+  selectCategory(category){
+    console.log(category);
+    this.router.navigate(['/tripList'], {queryParams : category });
   }
 
 }

@@ -4,7 +4,7 @@
             <h2>Catégories</h2>
         </div>
         <div class="categoriesList">
-            <div *ngFor="let category of categoriesList" class="category"> {{ category.label }}</div>
+            <div *ngFor="let category of categoriesList" class="category" (click)="selectCategory(category)"> {{ category.label }}</div>
         </div>
     </div>
 </div>

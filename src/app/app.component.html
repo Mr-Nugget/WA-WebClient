@@ -1,6 +1,10 @@
 <header class="container-fluid">
-  <div>
+  <div class="appName" [routerLink]="'/'">
     Wild Adventure
+  </div>
+  <div class="menu">
+    <button class="btn" [routerLink]="'/categories'">Catégories</button>
+    <button class="btn" [routerLink]="'/'">Mon compte</button>
   </div>
 </header>
 <router-outlet></router-outlet>

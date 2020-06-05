@@ -7,11 +7,14 @@ import { CategoriesComponent } from './categories/categories.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CategoryService } from './services/category.service';
+import { TripListComponent } from './trip-list/trip-list.component';
+import { TripService } from './services/trip.services';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    TripListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { CategoryService } from './services/category.service';
     HttpClientModule,
   ],
   providers: [
-    CategoryService
+    CategoryService,
+    TripService
   ],
   bootstrap: [AppComponent]
 })
