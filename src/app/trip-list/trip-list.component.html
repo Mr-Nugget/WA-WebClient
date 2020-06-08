@@ -4,10 +4,11 @@
             <h2>Liste des voyages de la catégorie {{ category.label }}</h2>
         </div>
         <div class="listTrip">
-            <div *ngFor="let trip of listTrip" class="trip">
+            <div *ngFor="let trip of listTrip" class="trip" (click)="navigateToTrip(trip)">
                 <h4>{{ trip.label }}</h4>
                 <span>Destination : {{ trip.destination }}</span>
-                <img src="../../assets/montagne.jpg" alt="">
+                <img src="{{trip.imagePath}}" alt="">
+                <span>Nombre de personne maximum : {{ trip.maxPerson }}</span>
             </div>
             <div *ngIf="listTrip.length == 0">
                 Aucun voyage associé à cette catégorie n'a été trouvé...

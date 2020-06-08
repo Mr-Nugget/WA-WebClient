@@ -9,12 +9,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CategoryService } from './services/category.service';
 import { TripListComponent } from './trip-list/trip-list.component';
 import { TripService } from './services/trip.services';
+import { TripComponent } from './trip/trip.component';
+import { TripInstanceService } from './services/trip-instance.services';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
-    TripListComponent
+    TripListComponent,
+    TripComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { TripService } from './services/trip.services';
   ],
   providers: [
     CategoryService,
-    TripService
+    TripService,
+    TripInstanceService
   ],
   bootstrap: [AppComponent]
 })

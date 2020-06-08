@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 /**
- * Category service to get the list of all categories
+ * Trip service to get the list of trip depending on category id
  */
 @Injectable()
 export class TripService{

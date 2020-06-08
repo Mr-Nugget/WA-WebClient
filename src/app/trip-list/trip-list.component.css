@@ -20,6 +20,7 @@
     padding-bottom: 40px;
     border-bottom: solid 1px #C3C3C3;
     width: 80%;
+    cursor: pointer;
 }
 
 .trip img{

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { TripService } from '../services/trip.services';
 
 @Component({
@@ -12,7 +12,7 @@ export class TripListComponent implements OnInit {
   category : any;
   listTrip;
 
-  constructor(private route: ActivatedRoute, private tripService: TripService) { }
+  constructor(private route: ActivatedRoute, private tripService: TripService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(
@@ -25,5 +25,9 @@ export class TripListComponent implements OnInit {
           });
       }
     )
+  }
+
+  navigateToTrip(trip){
+    this.router.navigate(['/trip'], {state: {data : trip}});
   }
 }
