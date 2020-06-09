@@ -1,13 +1,25 @@
 <header class="container-fluid">
   <div class="appName" [routerLink]="'/'">
-    Wild Adventure
+    <img src="../assets/logo-buffle.png" alt="">
+    <div class="title">
+      <h1>Wild Adventure</h1>
+    </div>
   </div>
   <div class="menu">
+    <button class="btn" [routerLink]="'/'">Accueil</button>
     <button class="btn" [routerLink]="'/categories'">Catégories</button>
-    <button class="btn" [routerLink]="'/'">Mon compte</button>
+    <button class="btn" id="authButton" mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faPowerOff"></fa-icon></button>
+    <mat-menu id="authMenu" #menu="matMenu">
+      <button class="btn btn-submenu" mat-menu-item routerLink="/login">
+        <span>Se connecter</span>
+      </button>
+      <button class="btn btn-submenu" mat-menu-item routerLink="/register">
+        <span>Créer un compte</span>
+      </button>
+    </mat-menu>
   </div>
 </header>
 <router-outlet></router-outlet>
 <footer>
-  
+
 </footer>

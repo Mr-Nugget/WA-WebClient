@@ -4,6 +4,29 @@
             <div class="title">
                 <h3>{{ trip.label }}</h3>
             </div>
+            <div class="imageAndTexte">
+                <img src="{{trip.imagePath}}" alt="">
+                <p>{{ trip.description }}</p>
+            </div>
+            <div class="destination">
+                <span>Destination : {{ trip.destination }}</span>
+            </div>
+            <div class="tripInstances">
+                <form>
+                    <div class="form-group">
+                        <label for="tripInstances">Dates disponibles : </label>
+                        <select class="form-control" name="Dates" id="tripInstances">
+                            <option *ngFor="let date of dates" value="">Du {{ date.beginDate | date:'dd/MM/yyyy' }}
+                                au {{ date.endDate | date:'dd/MM/yyyy' }} - {{ trip.maxPerson - date.currentPerson  }} places</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success">
+                            Réserver
+                        </button>
+                    </div>                   
+                </form>
+            </div>
         </div>
     </div>
 </div>

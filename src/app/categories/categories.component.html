@@ -3,6 +3,9 @@
         <div class="title">
             <h2>Catégories</h2>
         </div>
+        <div>
+            <p>Selectionnez une catégorie pour lister les voyages disponibles associés.</p>
+        </div>
         <div class="categoriesList">
             <div *ngFor="let category of categoriesList" class="category" (click)="selectCategory(category)"> {{ category.label }}</div>
         </div>

@@ -1,14 +1,18 @@
 <div class="main">
     <div class="content">
         <div class="title">
+            <button id="backButton" class="btn" [routerLink] = "'/categories'"><fa-icon [icon]="faArrowLeft" size="3x"></fa-icon></button>
             <h2>Liste des voyages de la catégorie {{ category.label }}</h2>
         </div>
         <div class="listTrip">
-            <div *ngFor="let trip of listTrip" class="trip" (click)="navigateToTrip(trip)">
+            <div *ngFor="let trip of listTrip" class="trip">
                 <h4>{{ trip.label }}</h4>
-                <span>Destination : {{ trip.destination }}</span>
                 <img src="{{trip.imagePath}}" alt="">
+                <span>Destination : {{ trip.destination }}</span>
                 <span>Nombre de personne maximum : {{ trip.maxPerson }}</span>
+                <button class="btn btn-success" (click)="navigateToTrip(trip)">
+                    Détails
+                </button>
             </div>
             <div *ngIf="listTrip.length == 0">
                 Aucun voyage associé à cette catégorie n'a été trouvé...

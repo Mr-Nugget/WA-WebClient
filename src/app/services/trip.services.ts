@@ -15,4 +15,8 @@ export class TripService{
     async getTripByCategory(categoryId){
         return await this.httpClient.get(this.url + "Trip/byCategory/" + categoryId).toPromise();
     }
+
+    async getTripById(id){
+        return await this.httpClient.get(this.url + "Trip/byId/" + id).toPromise();
+    }
 }

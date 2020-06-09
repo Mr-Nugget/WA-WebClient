@@ -11,19 +11,31 @@ import { TripListComponent } from './trip-list/trip-list.component';
 import { TripService } from './services/trip.services';
 import { TripComponent } from './trip/trip.component';
 import { TripInstanceService } from './services/trip-instance.services';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
     TripListComponent,
-    TripComponent
+    TripComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    FontAwesomeModule
   ],
   providers: [
     CategoryService,
