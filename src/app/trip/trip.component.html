@@ -5,18 +5,21 @@
                 <h3>{{ trip.label }}</h3>
             </div>
             <div class="imageAndTexte">
-                <img src="{{trip.imagePath}}" alt="">
+                <img src="{{ trip.imagePath }}" alt="">
                 <p>{{ trip.description }}</p>
             </div>
             <div class="destination">
                 <span>Destination : {{ trip.destination }}</span>
             </div>
+            <div *ngIf="dates.length != 0" class="price">
+                <span>Prix : {{ price }} €</span>
+            </div>
             <div class="tripInstances">
-                <form>
+                <form *ngIf="dates.length != 0">
                     <div class="form-group">
                         <label for="tripInstances">Dates disponibles : </label>
-                        <select class="form-control" name="Dates" id="tripInstances">
-                            <option *ngFor="let date of dates" value="">Du {{ date.beginDate | date:'dd/MM/yyyy' }}
+                        <select class="form-control" #mySelect name="Dates" id="tripInstances" (change)='onOptionsSelected(mySelect.value)'>
+                            <option *ngFor="let date of dates" value="{{ date.id }}">Du {{ date.beginDate | date:'dd/MM/yyyy' }}
                                 au {{ date.endDate | date:'dd/MM/yyyy' }} - {{ trip.maxPerson - date.currentPerson  }} places</option>
                         </select>
                     </div>
@@ -26,6 +29,9 @@
                         </button>
                     </div>                   
                 </form>
+            </div>
+            <div *ngIf="dates.length == 0" class="notAvailable">
+                Ce voyage n'est pas disponible pour le moment...
             </div>
         </div>
     </div>

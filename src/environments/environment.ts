@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlTrip: "http://localhost:9090/"
+  urlTrip: "http://localhost:9090/",
+  urlUser: "http://localhost:10090/"
 };
 
 /*

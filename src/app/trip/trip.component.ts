@@ -12,6 +12,7 @@ export class TripComponent implements OnInit {
 
   trip: any;
   dates;
+  price: number;
 
   constructor(private tripInstanceService: TripInstanceService,
     private tripService: TripService,
@@ -47,10 +48,23 @@ export class TripComponent implements OnInit {
         this.dates.sort((a, b) => {
           return <any>new Date(a.endDate) - <any>new Date(b.beginDate);
         });
+        this.price = this.dates[0].price;
       })
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  /**
+   * Set the right Price on select event change option
+   * @param tripInstanceId
+   */
+  onOptionsSelected(instanceId: string){
+    this.dates.find((date) => {
+      if(date.id == instanceId){
+        this.price = date.price;
+      }
+    });
   }
 
 }

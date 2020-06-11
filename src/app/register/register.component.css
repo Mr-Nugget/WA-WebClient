@@ -19,6 +19,11 @@
     margin-bottom: 15px;
 }
 
+.names{
+    display: flex;
+    justify-content: space-between;
+}
+
 #connectionForm{
     width: 50%;
 }
@@ -26,4 +31,20 @@
 .submitGrp{
     display: flex;
     justify-content: center;
+}
+
+.error{
+    margin-bottom: 10px;
+    color: red;
+}
+
+.redirect{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.greeting{
+    font-size: 20px;
+    text-align: center;
 }
