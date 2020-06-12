@@ -21,5 +21,12 @@
 .title {
     text-align: center;
 }
+
+.error{
+    margin-bottom: 15px;
+    color: red;
+    text-align: center;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

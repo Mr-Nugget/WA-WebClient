@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TripInstanceService } from '../services/trip-instance.services';
 import { TripService } from '../services/trip.services';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-trip',
@@ -13,6 +14,10 @@ export class TripComponent implements OnInit {
   trip: any;
   dates;
   price: number;
+  
+  reservationForm = new FormGroup({
+    dates : new FormControl('', Validators.required)
+  });
 
   constructor(private tripInstanceService: TripInstanceService,
     private tripService: TripService,
@@ -31,7 +36,7 @@ export class TripComponent implements OnInit {
         .catch((error) => {
           console.log(error);
         });
-    }else{
+    } else {
       this.getTripInstances(this.trip.id);
     }
   }
@@ -43,12 +48,14 @@ export class TripComponent implements OnInit {
   getTripInstances(tripId) {
     this.tripInstanceService.getTripInstanceByTrip(tripId)
       .then((data) => {
-        this.dates = data;
-        // Sort the array by date
-        this.dates.sort((a, b) => {
-          return <any>new Date(a.endDate) - <any>new Date(b.beginDate);
-        });
-        this.price = this.dates[0].price;
+        if (data != null) {
+          this.dates = data;
+          // Sort the array by date
+          this.dates.sort((a, b) => {
+            return <any>new Date(a.endDate) - <any>new Date(b.beginDate);
+          });
+          this.price = this.dates[0].price;
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -59,12 +66,16 @@ export class TripComponent implements OnInit {
    * Set the right Price on select event change option
    * @param tripInstanceId
    */
-  onOptionsSelected(instanceId: string){
+  onOptionsSelected(instanceId: string) {
     this.dates.find((date) => {
-      if(date.id == instanceId){
+      if (date.id == instanceId) {
         this.price = date.price;
       }
     });
+  }
+
+  reservationSubmit(){
+    console.log(this.reservationForm);
   }
 
 }

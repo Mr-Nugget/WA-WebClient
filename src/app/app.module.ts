@@ -19,6 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from './services/user.services';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CategoryService,
     TripService,
     TripInstanceService,
-    UserService
+    UserService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
