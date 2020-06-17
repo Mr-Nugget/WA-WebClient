@@ -5,7 +5,8 @@
       <h1>Wild Adventure</h1>
     </div>
   </div>
-  <div class="menu">
+  <!-- Menu not connected mode-->
+  <div *ngIf="!isAuth" class="menu">
     <button class="btn" [routerLink]="'/'">Accueil</button>
     <button class="btn" [routerLink]="'/categories'">Catégories</button>
     <button class="btn" id="authButton" mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faPowerOff"></fa-icon></button>
@@ -15,6 +16,21 @@
       </button>
       <button class="btn btn-submenu" mat-menu-item routerLink="/register">
         <span>Créer un compte</span>
+      </button>
+    </mat-menu>
+  </div>
+  <!-- Menu connected mode -->
+  <div *ngIf="isAuth" class="menu">
+    <button class="btn" [routerLink]="'/'">Accueil</button>
+    <button class="btn" [routerLink]="'/categories'">Catégories</button>
+    <button class="btn" [routerLink]="'/cart'"><fa-icon [icon]="faShoppingCart"></fa-icon> Panier</button>
+    <button class="btn" id="accountBtn" mat-button [matMenuTriggerFor]="menu">{{user.firstname}} {{user.lastname}} <fa-icon [icon]="faSortDown"></fa-icon></button>
+    <mat-menu id="accountMenu" #menu="matMenu">
+      <button class="btn btn-submenu" mat-menu-item routerLink="/booking">
+        <span>Mes réservations</span>
+      </button>
+      <button class="btn btn-submenu" mat-menu-item (click)="logout()">
+        <span>Se déconnecter</span>
       </button>
     </mat-menu>
   </div>

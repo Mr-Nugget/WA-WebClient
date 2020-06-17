@@ -1,11 +1,11 @@
 <div class="main">
     <div class="content">
         <h1>Bienvenue ! </h1>
-        <p>Recherchez un voyage en selectionnant une catégorie ou bien connectez-vous !</p>
+        <p>Recherchez un voyage en selectionnant une catégorie !</p>
         <div class="proposals">
             <button class="btn btn-success" [routerLink]="'/categories'">Catégories</button>
-            <button class="btn btn-success" [routerLink]="'/login'">Se connecter</button>
-            <button class="btn btn-success" [routerLink]="'/register'">Créer un compte</button>
+            <button *ngIf="!isAuth" class="btn btn-success" [routerLink]="'/login'">Se connecter</button>
+            <button *ngIf="!isAuth" class="btn btn-success" [routerLink]="'/register'">Créer un compte</button>
         </div>
     </div>
 </div>

@@ -22,9 +22,12 @@ export class RegisterComponent implements OnInit {
     confirm: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    if(this.userService.isAuth()){
+      this.router.navigate(['/']);
+    }
   }
 
   onSubmit(){

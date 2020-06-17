@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label for="tripInstances">Dates disponibles : </label>
                         <select class="form-control" #mySelect name="Dates" id="tripInstances" (change)='onOptionsSelected(mySelect.value)' formControlName="dates">
-                            <option *ngFor="let date of dates" value="{{ date.id }}">Du {{ date.beginDate | date:'dd/MM/yyyy' }}
+                            <option *ngFor="let date of dates; let i = index"  value="{{ date.id }}" [selected] = "i==0">Du {{ date.beginDate | date:'dd/MM/yyyy' }}
                                 au {{ date.endDate | date:'dd/MM/yyyy' }} - {{ trip.maxPerson - date.currentPerson  }} places</option>
                         </select>
                     </div>

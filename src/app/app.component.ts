@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import { CookieService } from 'ngx-cookie-service';
+import { faPowerOff, faSortDown, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from './services/user.services';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,20 +12,24 @@ import { UserService } from './services/user.services';
 export class AppComponent implements OnInit {
   title = 'Wild Adventure';
   faPowerOff = faPowerOff;
+  faSortDown = faSortDown;
+  faShoppingCart = faShoppingCart;
+  user: any;
+  isAuth: boolean = false;
 
-  constructor(private cookieService : CookieService, private userService: UserService){
+  constructor(private router: Router, private userService: UserService){
 
   }
 
   ngOnInit(){
-    if(this.cookieService.check('jwt')){
-      /**this.userService.getUserbyToken(this.cookieService.get('jwt'))
-          .then((data) =>{
-            console.log(data);
-          })
-          .catch((error) =>{
-            console.error(error);
-          });**/
+    if(this.userService.isAuth()){
+      this.user = this.userService.getUser();
+      this.isAuth = true;
     }
+  }
+
+  logout(){
+    this.userService.logout();
+    window.location.href = '/login'
   }
 }

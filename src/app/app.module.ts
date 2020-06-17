@@ -20,6 +20,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from './services/user.services';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service'
+import { AuthGuard } from './services/auth-guard.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { CookieService } from 'ngx-cookie-service'
     TripService,
     TripInstanceService,
     UserService,
-    CookieService
+    CookieService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

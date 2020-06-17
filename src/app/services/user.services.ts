@@ -2,16 +2,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { CookieService } from 'ngx-cookie-service';
+import { JwtHelperService } from '@auth0/angular-jwt'
 
 /**
- * User service to authentification (login, register)
+ * User service to authentification (login, register, isConnected)
  */
 @Injectable()
-export class UserService{
+export class UserService {
 
     private url: string = environment.urlUser;
+    private myUser: any;
+    private jwtHelper;
 
-    constructor(private httpClient: HttpClient){}
+    constructor(private httpClient: HttpClient, private cookieService: CookieService) {
+        this.myUser = null;
+        this.jwtHelper = new JwtHelperService();
+    }
 
     /**
      * Create a new user 
@@ -21,9 +28,9 @@ export class UserService{
      * @param mail 
      * @param password 
      */
-    async createUser(firstname: String, lastname: String, mail: String, password: String){
-        return await this.httpClient.post(this.url + 'User/add', 
-                        { firstname: firstname, lastname: lastname, mail: mail, password: password }).toPromise();
+    async createUser(firstname: String, lastname: String, mail: String, password: String) {
+        return await this.httpClient.post(this.url + 'User/add',
+            { firstname: firstname, lastname: lastname, mail: mail, password: password }).toPromise();
     }
     /**
      * Log a user with mail and password
@@ -32,16 +39,54 @@ export class UserService{
      * @param mail 
      * @param password 
      */
-    async authenticate(mail: String, password: String){
+    async authenticate(mail: String, password: String) {
         return await this.httpClient.post(this.url + "User/authenticate",
-                        { mail : mail, password : password }).toPromise();
+            { mail: mail, password: password }).toPromise();
     }
 
-    async getUserbyToken(jwt: string) {
-        const headers = new HttpHeaders()
-            .set("Authorization", "Bearer " + jwt);
-        return await this.httpClient.get(this.url + "User/byToken/" + jwt,
-                                        { headers })
-                                        .toPromise();
-      }
+    /**
+     * Get a user by it's jwt token
+     * @param jwt
+     */
+    getUserbyToken(jwt: string) {
+        let httpHeaders = new HttpHeaders();
+        httpHeaders = httpHeaders.append("Authorization", "Bearer " + jwt);
+        return this.httpClient.get(this.url + 'User/byToken/' + jwt,
+            { headers: httpHeaders });
+    }
+    /**
+     * Set user infos with lastname and firstname
+     * @param user
+     */
+    setUser(user: any) {
+        this.myUser = user;
+    }
+
+    getUser() {
+        if (this.myUser == null) {
+            this.myUser = { firstname: this.cookieService.get('firstname'), lastname: this.cookieService.get('lastname') };
+        }
+        return this.myUser;
+    }
+
+    /**
+     * To know if a user is authentificate for auth-guard
+     */
+    isAuth() {
+        if (this.cookieService.check('jwt')) {
+            const jwt = this.cookieService.get('jwt');
+            return !this.jwtHelper.isTokenExpired(jwt);
+        } else {
+            return false;
+        }
+    }
+
+    /**
+      * Remove cookie authentification
+      */
+    logout() {
+        this.cookieService.delete('jwt');
+        this.cookieService.delete('firstname');
+        this.cookieService.delete('lastname');
+    }
 }
