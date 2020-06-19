@@ -23,7 +23,6 @@ export class TripListComponent implements OnInit {
         this.tripService.getTripByCategory(this.category.id)
           .then((data) => {
             this.listTrip = data;
-            console.log(this.listTrip);
           });
       }
     )

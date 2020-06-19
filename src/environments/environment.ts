@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   urlTrip: "http://localhost:9090/",
-  urlUser: "http://localhost:10090/"
+  urlUser: "http://localhost:10090/",
+  urlBooking: "http://localhost:11090/"
 };
 
 /*

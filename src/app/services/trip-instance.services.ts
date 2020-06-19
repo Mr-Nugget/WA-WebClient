@@ -14,4 +14,8 @@ export class TripInstanceService{
     async getTripInstanceByTrip(tripId){
         return await this.httpClient.get(this.url + "Dates/byTrip/" + tripId).toPromise();
     }
+
+    async getTripInstanceById(instanceId){
+        return await this.httpClient.get(this.url + "Dates/byId/" + instanceId).toPromise();
+    }
 }

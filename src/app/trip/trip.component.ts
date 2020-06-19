@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TripInstanceService } from '../services/trip-instance.services';
 import { TripService } from '../services/trip.services';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -14,6 +14,7 @@ export class TripComponent implements OnInit {
   trip: any;
   dates;
   price: number;
+  defaultSelect = 0;
   
   reservationForm = new FormGroup({
     dates : new FormControl('', Validators.required)
@@ -21,13 +22,13 @@ export class TripComponent implements OnInit {
 
   constructor(private tripInstanceService: TripInstanceService,
     private tripService: TripService,
-    private route: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute, private router : Router) { }
 
   ngOnInit(): void {
     var tripId;
     this.trip = history.state.data;
     if (this.trip == undefined || this.trip == null) {
-      tripId = this.route.snapshot.paramMap.get("id");
+      tripId = this.activatedRoute.snapshot.paramMap.get("id");
       this.tripService.getTripById(tripId)
         .then((data) => {
           this.trip = data;
@@ -39,6 +40,8 @@ export class TripComponent implements OnInit {
     } else {
       this.getTripInstances(this.trip.id);
     }
+
+    
   }
 
   /**
@@ -66,16 +69,15 @@ export class TripComponent implements OnInit {
    * Set the right Price on select event change option
    * @param tripInstanceId
    */
-  onOptionsSelected(instanceId: string) {
-    this.dates.find((date) => {
-      if (date.id == instanceId) {
-        this.price = date.price;
-      }
-    });
+  onOptionsSelected(instanceIndex: string) {
+    const instance = this.dates[instanceIndex];
+    this.price = instance.price;
   }
 
   reservationSubmit(){
-    console.log(this.reservationForm);
+    const tripInstance = this.dates[this.reservationForm.value['dates']];
+    console.log(tripInstance)
+    this.router.navigate(['/reservation'], {state: {trip: this.trip, instance : tripInstance}});
   }
 
 }

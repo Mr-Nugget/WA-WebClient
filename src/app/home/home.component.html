@@ -6,6 +6,7 @@
             <button class="btn btn-success" [routerLink]="'/categories'">Catégories</button>
             <button *ngIf="!isAuth" class="btn btn-success" [routerLink]="'/login'">Se connecter</button>
             <button *ngIf="!isAuth" class="btn btn-success" [routerLink]="'/register'">Créer un compte</button>
+            <button *ngIf="isAuth" class="btn btn-success" [routerLink]="'/cart'">Consulter mon panier</button>
         </div>
     </div>
 </div>

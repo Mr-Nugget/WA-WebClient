@@ -7,6 +7,9 @@ import { TripComponent } from '../trip/trip.component';
 import { HomeComponent } from '../home/home.component';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { ReservationComponent } from '../reservation/reservation.component';
+import { AuthGuard } from '../services/auth-guard.service';
+import { CartComponent } from '../cart/cart.component';
 
 
 
@@ -16,7 +19,9 @@ const routes: Routes = [
   { path: 'tripList', component: TripListComponent },
   { path: 'trip/:id', component: TripComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'reservation', canActivate: [AuthGuard], component: ReservationComponent},
+  { path: 'cart', canActivate: [AuthGuard], component: CartComponent }
 ]
 
 

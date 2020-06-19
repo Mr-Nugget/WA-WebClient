@@ -1,0 +1,41 @@
+<div class="main">
+    <div class="content">
+        <div class="title">
+            <h1>Ajoutez ce voyage à votre panier</h1>
+        </div>
+        <div class="recap">
+            <div>
+                {{ trip.label }} 
+            </div>
+            <div>
+                {{ trip.destination }} 
+            </div>
+            <div>
+                {{ instance.price }} € / personne
+            </div>
+            <div>
+                Du {{ instance.beginDate | date:'dd/MM/yyyy' }} au {{ instance.endDate | date:'dd/MM/yyyy' }}
+            </div>
+            <div>
+                <form [formGroup] = "reservationForm" (ngSubmit)="reservationSubmit()">
+                    <div class="form-group">
+                        <label for="nbPerson">Nombre de personne :</label>
+                        <select class="form-control" #mySelect name="Person" id="nbPerson" formControlName="nbPerson" [(ngModel)]="defaultSelect">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                    <div class="form-group submitButton">
+                        <button class="btn btn-success" [disabled]="!reservationForm.valid">
+                            Valider
+                        </button>
+                    </div>                   
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

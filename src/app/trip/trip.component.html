@@ -15,19 +15,22 @@
                 <span>Prix : {{ price }} € TTC/ personne</span>
             </div>
             <div class="tripInstances">
-                <form *ngIf="dates.length > 0" [formGroup] = "reservationForm" (ngSubmit)="reservationSubmit()">
+                <form *ngIf="dates.length > 0" [formGroup]="reservationForm" (ngSubmit)="reservationSubmit()">
                     <div class="form-group">
                         <label for="tripInstances">Dates disponibles : </label>
-                        <select class="form-control" #mySelect name="Dates" id="tripInstances" (change)='onOptionsSelected(mySelect.value)' formControlName="dates">
-                            <option *ngFor="let date of dates; let i = index"  value="{{ date.id }}" [selected] = "i==0">Du {{ date.beginDate | date:'dd/MM/yyyy' }}
-                                au {{ date.endDate | date:'dd/MM/yyyy' }} - {{ trip.maxPerson - date.currentPerson  }} places</option>
+                        <select class="form-control" #mySelect name="Dates" id="tripInstances"
+                            (change)='onOptionsSelected(mySelect.value)' formControlName="dates" [(ngModel)]="defaultSelect">
+                            <option *ngFor="let date of dates; let i = index" value="{{ i }}" [selected]="i==0">Du
+                                {{ date.beginDate | date:'dd/MM/yyyy' }}
+                                au {{ date.endDate | date:'dd/MM/yyyy' }} - {{ trip.maxPerson - date.currentPerson  }}
+                                places</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success">
                             Réserver
                         </button>
-                    </div>                   
+                    </div>
                 </form>
             </div>
             <div *ngIf="dates.length == 0" class="notAvailable">

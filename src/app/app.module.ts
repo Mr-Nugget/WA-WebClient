@@ -22,6 +22,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service'
 import { AuthGuard } from './services/auth-guard.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ReservationComponent } from './reservation/reservation.component';
+import { CartService } from './services/cart.service';
+import { CartComponent } from './cart/cart.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +40,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     TripComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ReservationComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +51,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     HttpClientModule,
     BrowserAnimationsModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
     FontAwesomeModule,
     ReactiveFormsModule
   ],
@@ -49,7 +63,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     TripInstanceService,
     UserService,
     CookieService,
-    AuthGuard
+    AuthGuard,
+    CartService
   ],
   bootstrap: [AppComponent]
 })
