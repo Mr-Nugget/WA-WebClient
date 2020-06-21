@@ -10,6 +10,7 @@ import { RegisterComponent } from '../register/register.component';
 import { ReservationComponent } from '../reservation/reservation.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { CartComponent } from '../cart/cart.component';
+import { PaymentComponent } from '../payment/payment.component';
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'reservation', canActivate: [AuthGuard], component: ReservationComponent},
-  { path: 'cart', canActivate: [AuthGuard], component: CartComponent }
+  { path: 'cart', canActivate: [AuthGuard], component: CartComponent },
+  { path: 'payment', canActivate: [AuthGuard], component: PaymentComponent }
 ]
 
 

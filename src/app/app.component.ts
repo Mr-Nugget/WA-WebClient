@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPowerOff, faSortDown, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faSortDown, faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from './services/user.services';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   faPowerOff = faPowerOff;
   faSortDown = faSortDown;
   faShoppingCart = faShoppingCart;
+  faUserCircle = faUserCircle;
   user: any;
   isAuth: boolean = false;
 

@@ -9,7 +9,7 @@
   <div *ngIf="!isAuth" class="menu">
     <button class="btn" [routerLink]="'/'">Accueil</button>
     <button class="btn" [routerLink]="'/categories'">Catégories</button>
-    <button class="btn" id="authButton" mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faPowerOff"></fa-icon></button>
+    <button class="btn" id="accountBtn" mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faUserCircle"></fa-icon><span>Mon compte</span></button>
     <mat-menu id="authMenu" #menu="matMenu">
       <button class="btn btn-submenu" mat-menu-item routerLink="/login">
         <span>Se connecter</span>
@@ -24,7 +24,7 @@
     <button class="btn" [routerLink]="'/'">Accueil</button>
     <button class="btn" [routerLink]="'/categories'">Catégories</button>
     <button class="btn" [routerLink]="'/cart'"><fa-icon [icon]="faShoppingCart"></fa-icon> Panier</button>
-    <button class="btn" id="accountBtn" mat-button [matMenuTriggerFor]="menu">{{user.firstname}} {{user.lastname}} <fa-icon [icon]="faSortDown"></fa-icon></button>
+    <button class="btn" id="accountBtn" mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faUserCircle"></fa-icon><span>{{user.firstname}} {{user.lastname}}</span><fa-icon [icon]="faSortDown"></fa-icon></button>
     <mat-menu id="accountMenu" #menu="matMenu">
       <button class="btn btn-submenu" mat-menu-item routerLink="/booking">
         <span>Mes réservations</span>

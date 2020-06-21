@@ -28,6 +28,8 @@ import { CartComponent } from './cart/cart.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { PaymentComponent } from './payment/payment.component'
 
 
 
@@ -42,7 +44,8 @@ import {MatSelectModule} from '@angular/material/select';
     LoginComponent,
     RegisterComponent,
     ReservationComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     MatInputModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPayPalModule
   ],
   providers: [
     CategoryService,

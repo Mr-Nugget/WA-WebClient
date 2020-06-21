@@ -47,3 +47,14 @@ button{
     height: 50px;
     color: white;
 }
+
+#accountBtn{
+    margin-left: 30px;
+    padding-left: 30px;
+    border-left: 1px solid #c3c3c3;
+}
+
+#accountBtn span{
+    margin-left: 10px;
+    margin-right: 10px;
+}
