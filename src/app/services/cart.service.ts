@@ -29,4 +29,11 @@ export class CartService {
     getCart(){
         return this.cart;
     }
+
+    cleanCart(id: number){
+        this.cart = null;
+        return this.httpClient.get(this.url + "Cart/clean/" + id);
+        
+    }
+
 }

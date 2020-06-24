@@ -30,6 +30,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { PaymentComponent } from './payment/payment.component'
+import { BookingService } from './services/booking.service';
+import { PaymentService } from './services/payment.service';
 
 
 
@@ -68,7 +70,9 @@ import { PaymentComponent } from './payment/payment.component'
     UserService,
     CookieService,
     AuthGuard,
-    CartService
+    CartService,
+    BookingService,
+    PaymentService
   ],
   bootstrap: [AppComponent]
 })

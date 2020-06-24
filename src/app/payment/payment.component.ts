@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { Router } from '@angular/router';
+import { PaymentService } from '../services/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -14,11 +15,15 @@ export class PaymentComponent implements OnInit {
   showCancel: boolean;
   showError: boolean;
   cart: any;
+  booking: any;
+  funding: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private paymentService: PaymentService) { }
 
   ngOnInit(): void {
-    this.cart = history.state.data;
+    this.cart = history.state.cart;
+    this.booking = history.state.booking;
+    console.log(this.booking);
     if(this.cart == undefined){
       this.router.navigate(['/cart']);
     }
@@ -58,7 +63,13 @@ export class PaymentComponent implements OnInit {
 
         },
         onClientAuthorization: (data) => {
-            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+            this.paymentService.addPayment(data, this.funding, this.booking['id']).subscribe(
+                ((data)=>{
+                    console.log(data);
+                }),
+                ((error)=>{
+                    console.log(error);
+                }));
             this.showSuccess = true;
         },
         onCancel: (data, actions) => {
@@ -72,6 +83,7 @@ export class PaymentComponent implements OnInit {
         },
         onClick: (data, actions) => {
             console.log('onClick', data, actions);
+            this.funding = data['fundingSource'];
             this.resetStatus();
         },
     };
