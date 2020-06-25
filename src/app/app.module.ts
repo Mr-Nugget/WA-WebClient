@@ -32,6 +32,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { PaymentComponent } from './payment/payment.component'
 import { BookingService } from './services/booking.service';
 import { PaymentService } from './services/payment.service';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 
 
@@ -47,7 +48,8 @@ import { PaymentService } from './services/payment.service';
     RegisterComponent,
     ReservationComponent,
     CartComponent,
-    PaymentComponent
+    PaymentComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

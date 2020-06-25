@@ -1,0 +1,23 @@
+.confirmMessage, .errorMessage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(35, 196, 35);
+    font-size: large;
+    height: 120px;
+    margin-top: 30px;
+}
+
+.errorMessage{
+    color: red;
+}
+
+.errorInfo{
+    text-align: center;
+}
+
+.backButton{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
