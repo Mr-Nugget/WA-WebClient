@@ -4,6 +4,7 @@ import { CartService } from '../services/cart.service';
 import { TripInstanceService } from '../services/trip-instance.services';
 import { Router } from '@angular/router';
 import { BookingService } from '../services/booking.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-cart',
@@ -13,17 +14,19 @@ import { BookingService } from '../services/booking.service';
 export class CartComponent implements OnInit {
 
   cart: any;
-  isEmpty: boolean = false;
+  isEmpty: boolean = true;
 
   constructor(
     private cookieService: CookieService,
     private cartService: CartService,
     private bookingService: BookingService,
     private instanceService: TripInstanceService,
-    private router: Router
+    private router: Router,
+    private spinner : NgxSpinnerService
     ) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     // Get the cart associated to the user
     this.cartService.getCartByUser(this.cookieService.get('userId'))
       .then((cart) => {
@@ -32,16 +35,19 @@ export class CartComponent implements OnInit {
           .then((trip) => {
             this.cartService.setCart(cart['id'], cart['nbPerson'], cart['totalPrice'], cart['idTrip'], cart['idUser'], trip);
             this.cart = this.cartService.getCart();
-            console.log(this.cart);
+            this.spinner.hide();
+            this.isEmpty = false;
           })
           .catch((error) => {
             console.error(error);
-            this.isEmpty = true;
+            this.isEmpty =  true;
+            this.spinner.hide();
           });
       })
       .catch((error) => {
         console.log(error);
         this.isEmpty = true;
+        this.spinner.hide();
       });
   }
 
@@ -59,7 +65,15 @@ export class CartComponent implements OnInit {
         this.router.navigate(['/payment'], { state: { cart: this.cart, booking: data } });
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
+        this.cartService.cleanCart(this.cart['id'])
+          .subscribe(
+            ()=>{
+              this.router.navigate(['/error']);
+            },
+            (error)=>{
+              console.log(error);
+            });
       });
   }
 

@@ -1,0 +1,24 @@
+.title{
+    margin-bottom: 30px;
+}
+
+table{
+    text-align: center;
+}
+
+.warning a{
+    color: red;
+}
+
+.warning a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.paid{
+    color: rgb(12, 175, 12);
+}
+
+.noResa{
+    text-align: center;
+}

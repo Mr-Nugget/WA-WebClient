@@ -26,7 +26,7 @@
     <button class="btn" [routerLink]="'/cart'"><fa-icon [icon]="faShoppingCart"></fa-icon> Panier</button>
     <button class="btn" id="accountBtn" mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faUserCircle"></fa-icon><span>{{user.firstname}} {{user.lastname}}</span><fa-icon [icon]="faSortDown"></fa-icon></button>
     <mat-menu id="accountMenu" #menu="matMenu">
-      <button class="btn btn-submenu" mat-menu-item routerLink="/booking">
+      <button class="btn btn-submenu" mat-menu-item routerLink="/myBookings">
         <span>Mes réservations</span>
       </button>
       <button class="btn btn-submenu" mat-menu-item (click)="logout()">

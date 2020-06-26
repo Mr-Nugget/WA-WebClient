@@ -21,4 +21,8 @@ export class BookingService {
             tripId: cart['tripId']
         }).toPromise();
     }
+
+    getBookingsOfUser(userId: number){
+        return this.httpClient.get(this.url + "Booking/byUser/" + userId);
+    }
 }

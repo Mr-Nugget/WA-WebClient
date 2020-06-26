@@ -14,10 +14,10 @@
                 <h3>Récapitulatif de commande</h3>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Numéro de commande : zeefzezf132ez1fefz</li>
-                <li class="list-group-item">Voyage : </li>
-                <li class="list-group-item">Dates : </li>
-                <li class="list-group-item">Nombre de personnes : </li>
+                <li class="list-group-item">Numéro de commande : {{ booking.id }}</li>
+                <li class="list-group-item">Voyage : {{ tripInstance.trip.label }}</li>
+                <li class="list-group-item">Dates : Du {{tripInstance.beginDate | date:'dd/MM/yyyy' }} au {{tripInstance.endDate | date:'dd/MM/yyyy' }}</li>
+                <li class="list-group-item">Nombre de personnes : {{ booking.nbPerson }}</li>
             </ul>
         </div>
         <!-- Erreur lors de la commande -->
@@ -30,7 +30,7 @@
             <p>Veuillez cliquer sur mes réservations pour confirmer la commande</p>
         </div>
         <div class="backButton">
-            <button class="btn btn-success">Mes réservations</button>
+            <button class="btn btn-success" routerLink="/myBookings">Mes réservations</button>
         </div>
     </div>
 </div>

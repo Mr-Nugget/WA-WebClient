@@ -25,14 +25,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ReservationComponent } from './reservation/reservation.component';
 import { CartService } from './services/cart.service';
 import { CartComponent } from './cart/cart.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { PaymentComponent } from './payment/payment.component'
 import { BookingService } from './services/booking.service';
 import { PaymentService } from './services/payment.service';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { UserBookingsComponent } from './user-bookings/user-bookings.component';
+import { ErrorComponent } from './error/error.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -49,7 +53,10 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     ReservationComponent,
     CartComponent,
     PaymentComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    UserBookingsComponent,
+    ErrorComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +70,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     MatInputModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    NgxSpinnerModule
   ],
   providers: [
     CategoryService,

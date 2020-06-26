@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { Router } from '@angular/router';
 import { PaymentService } from '../services/payment.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-payment',
@@ -18,14 +19,13 @@ export class PaymentComponent implements OnInit {
   booking: any;
   funding: string;
 
-  constructor(private router: Router, private paymentService: PaymentService) { }
+  constructor(private router: Router, private paymentService: PaymentService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.cart = history.state.cart;
     this.booking = history.state.booking;
-    console.log(this.booking);
     if(this.cart == undefined){
-      this.router.navigate(['/cart']);
+      this.router.navigate(['/myBookings']);
     }
     this.initConfig();
   }
@@ -56,6 +56,7 @@ export class PaymentComponent implements OnInit {
             size: 'large'
         },
         onApprove: (data, actions) => {
+            this.spinner.show();
             console.log('onApprove - transaction was approved, but not authorized', data, actions);
             actions.order.get().then(details => {
                 console.log('onApprove - you can get full order details inside onApprove: ', details);
@@ -63,12 +64,14 @@ export class PaymentComponent implements OnInit {
 
         },
         onClientAuthorization: (data) => {
+            
             this.paymentService.addPayment(data, this.funding, this.booking['id']).subscribe(
                 ((data)=>{
-                    console.log(data);
+                    this.router.navigate(['/confirmation'], {state: { booking: data }})
                 }),
                 ((error)=>{
                     console.log(error);
+                    this.router.navigate(['/confirmation'], {state: { booking : null }})
                 }));
             this.showSuccess = true;
         },

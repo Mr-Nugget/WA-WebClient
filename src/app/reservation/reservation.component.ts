@@ -21,6 +21,10 @@ export class ReservationComponent implements OnInit {
   ngOnInit(): void {
     this.trip = history.state.trip;
     this.instance = history.state.instance;
+
+    if(this.trip == undefined || this.instance == undefined){
+      this.router.navigate(['/cart']);
+    }
     
     this.reservationForm = new FormGroup({
       nbPerson: new FormControl('', Validators.required)
