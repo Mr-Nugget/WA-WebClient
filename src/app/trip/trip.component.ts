@@ -15,6 +15,7 @@ export class TripComponent implements OnInit {
   dates;
   price: number;
   defaultSelect = 0;
+  comments;
   
   reservationForm = new FormGroup({
     dates : new FormControl('', Validators.required)
@@ -25,23 +26,17 @@ export class TripComponent implements OnInit {
     private activatedRoute: ActivatedRoute, private router : Router) { }
 
   ngOnInit(): void {
-    var tripId;
-    this.trip = history.state.data;
-    if (this.trip == undefined || this.trip == null) {
-      tripId = this.activatedRoute.snapshot.paramMap.get("id");
+    var tripId = this.activatedRoute.snapshot.paramMap.get("id");
       this.tripService.getTripById(tripId)
         .then((data) => {
           this.trip = data;
+          console.log(data);
+          this.comments = this.trip.comments;
           this.getTripInstances(this.trip.id);
         })
         .catch((error) => {
           console.log(error);
         });
-    } else {
-      this.getTripInstances(this.trip.id);
-    }
-
-    
   }
 
   /**

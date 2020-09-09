@@ -16,6 +16,7 @@
                         <th scope="col">Date de réservation</th>
                         <th scope="col">Statut</th>
                         <th scope="col">Payé</th>
+                        <th scope="col">Avis</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,18 +26,20 @@
                         <td>{{ o.trip.body.beginDate | date:'dd/MM/yyyy'}}</td>
                         <td>{{ o.trip.body.endDate | date:'dd/MM/yyyy'}}</td>
                         <td>{{ o.booking.nbPerson }}</td>
-                        <td>{{ o.trip.body.price }} €</td>
+                        <td>{{ o.trip.body.price  | currency:'EUR':''}} €</td>
                         <td>{{ o.booking.date | date:'dd/MM/yyyy'}}</td>
                         <td *ngIf="o.booking.status == 1">A venir</td>
                         <td *ngIf="o.booking.status == 2">En cours</td>
-                        <td *ngIf="o.booking.status == 3">Archivé</td>
+                        <td *ngIf="o.booking.status == 3">Terminé</td>
                         <td class="paid" *ngIf="o.booking.payed"><fa-icon [icon]="faCheckCircle"></fa-icon></td>
                         <td class="warning" *ngIf="!o.booking.payed"><a (click)="goToPayment(i)"><fa-icon [icon]="faExclamationCircle"></fa-icon> Payer ici !</a></td>
+                        <td *ngIf="o.booking.status != 3"> - </td>
+                        <td *ngIf="o.booking.status == 3"><a [routerLink]="['/comment', o.trip.body.trip.id]">Donnez votre avis</a></td>
                     </tr>
                 </tbody>
             </table>
             <div class="noResa" *ngIf="!notEmpty">
-                <p>Une réservation n'est associé à ce compte...</p>
+                <p>Aucune réservation n'est associé à ce compte...</p>
             </div>
         </div>
     </div>

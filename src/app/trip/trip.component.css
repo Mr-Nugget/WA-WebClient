@@ -53,3 +53,34 @@ p{
     text-align: right;
     font-size: 20px;
 }
+
+.commentContent{
+    margin-top: 20px;
+}
+
+.commentContent h4{
+    font-size: 20px;
+}
+
+.comment{
+    height: 150px;
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 20px;
+    background-color: #F2F2F2;
+}
+
+.comment .user{
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.comment .date{
+    font-size: 13px;
+    font-style: italic;
+}
+
+.message{
+    padding-top: 15px;
+}

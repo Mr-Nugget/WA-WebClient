@@ -37,6 +37,9 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { UserBookingsComponent } from './user-bookings/user-bookings.component';
 import { ErrorComponent } from './error/error.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CommentComponent } from './comment/comment.component';
+import { CommentService } from './services/comment.service';
+import { CommentSuccessComponent } from './comment-success/comment-success.component';
 
 
 
@@ -56,7 +59,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ConfirmationComponent,
     UserBookingsComponent,
     ErrorComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CommentComponent,
+    CommentSuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +87,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AuthGuard,
     CartService,
     BookingService,
-    PaymentService
+    PaymentService,
+    CommentService
   ],
   bootstrap: [AppComponent]
 })

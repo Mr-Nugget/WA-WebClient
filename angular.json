@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "WAWebClient"
+  "defaultProject": "WAWebClient",
+  "cli": {
+    "analytics": "628e62c4-00f5-4b6c-a3e8-4b818164c078"
+  }
 }

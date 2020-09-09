@@ -14,6 +14,8 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
 import { UserBookingsComponent } from '../user-bookings/user-bookings.component';
 import { ErrorComponent } from '../error/error.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { CommentComponent } from '../comment/comment.component';
+import { CommentSuccessComponent } from '../comment-success/comment-success.component';
 
 
 
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'payment', canActivate: [AuthGuard], component: PaymentComponent },
   { path: 'confirmation', canActivate: [AuthGuard],  component: ConfirmationComponent },
   { path: 'myBookings', canActivate: [AuthGuard], component: UserBookingsComponent },
+  { path: 'comment/:tripId', canActivate: [AuthGuard], component: CommentComponent },
+  { path: 'commentSuccess', canActivate: [AuthGuard], component: CommentSuccessComponent },
   { path: 'error', canActivate: [AuthGuard], component: ErrorComponent },
   { path: '**', component: PageNotFoundComponent }
 ]
