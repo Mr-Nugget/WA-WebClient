@@ -15,6 +15,7 @@ export class CommentService {
         return await this.httpClient.post(this.url + "Comment/add", {
             content : comment['content'],
             tripId : comment['tripId'],
+            bookingId: comment['bookingId'],
             userId: comment['userId'],
             username: comment['username'],
             date : new Date(),

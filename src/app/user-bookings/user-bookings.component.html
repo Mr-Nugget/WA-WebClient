@@ -31,10 +31,11 @@
                         <td *ngIf="o.booking.status == 1">A venir</td>
                         <td *ngIf="o.booking.status == 2">En cours</td>
                         <td *ngIf="o.booking.status == 3">Terminé</td>
+                        <td *ngIf="o.booking.status == 4">Terminé</td>
                         <td class="paid" *ngIf="o.booking.payed"><fa-icon [icon]="faCheckCircle"></fa-icon></td>
                         <td class="warning" *ngIf="!o.booking.payed"><a (click)="goToPayment(i)"><fa-icon [icon]="faExclamationCircle"></fa-icon> Payer ici !</a></td>
                         <td *ngIf="o.booking.status != 3"> - </td>
-                        <td *ngIf="o.booking.status == 3"><a [routerLink]="['/comment', o.trip.body.trip.id]">Donnez votre avis</a></td>
+                        <td *ngIf="o.booking.status == 3"><a [routerLink]="['/comment', o.trip.body.trip.id, o.booking.id]">Donnez votre avis</a></td>
                     </tr>
                 </tbody>
             </table>

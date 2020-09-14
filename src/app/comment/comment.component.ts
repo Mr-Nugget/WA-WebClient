@@ -12,6 +12,7 @@ import { CommentService } from '../services/comment.service';
 export class CommentComponent implements OnInit {
 
   tripId: number;
+  bookingId: number;
   commentForm = new FormGroup({
     content : new FormControl('', Validators.required)
   })
@@ -20,6 +21,7 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.tripId = parseInt(this.activatedRoute.snapshot.paramMap.get("tripId"));
+    this.bookingId = parseInt(this.activatedRoute.snapshot.paramMap.get("bookingId"));
   }
 
   commentSubmit(){
@@ -33,7 +35,8 @@ export class CommentComponent implements OnInit {
       date: date,
       userId : userId,
       username : username,
-      tripId: this.tripId
+      tripId: this.tripId,
+      bookingId: this.bookingId
     };
 
     this.commentService.addComment(comment)

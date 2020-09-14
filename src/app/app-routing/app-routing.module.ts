@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'payment', canActivate: [AuthGuard], component: PaymentComponent },
   { path: 'confirmation', canActivate: [AuthGuard],  component: ConfirmationComponent },
   { path: 'myBookings', canActivate: [AuthGuard], component: UserBookingsComponent },
-  { path: 'comment/:tripId', canActivate: [AuthGuard], component: CommentComponent },
+  { path: 'comment/:tripId/:bookingId', canActivate: [AuthGuard], component: CommentComponent },
   { path: 'commentSuccess', canActivate: [AuthGuard], component: CommentSuccessComponent },
   { path: 'error', canActivate: [AuthGuard], component: ErrorComponent },
   { path: '**', component: PageNotFoundComponent }
