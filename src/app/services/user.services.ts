@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { GatewaySecurityService } from './gateway-security.service';
 
 /**
  * User service to authentification (login, register, isConnected)
@@ -11,11 +11,11 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 @Injectable()
 export class UserService {
 
-    private url: string = environment.urlUser;
+    private url: string = environment.urlAPI + environment.userMicroservice;
     private myUser: any;
     private jwtHelper;
 
-    constructor(private httpClient: HttpClient, private cookieService: CookieService) {
+    constructor(private httpClient: HttpClient, private cookieService: CookieService, private header: GatewaySecurityService) {
         this.myUser = null;
         this.jwtHelper = new JwtHelperService();
     }
@@ -30,7 +30,7 @@ export class UserService {
      */
     async createUser(firstname: String, lastname: String, mail: String, password: String) {
         return await this.httpClient.post(this.url + 'User/add',
-            { firstname: firstname, lastname: lastname, mail: mail, password: password }).toPromise();
+            { firstname: firstname, lastname: lastname, mail: mail, password: password }, this.header.getHeaderAuthorization()).toPromise();
     }
     /**
      * Log a user with mail and password
@@ -41,7 +41,7 @@ export class UserService {
      */
     async authenticate(mail: String, password: String) {
         return await this.httpClient.post(this.url + "User/authenticate",
-            { mail: mail, password: password }).toPromise();
+            { mail: mail, password: password }, this.header.getHeaderAuthorization()).toPromise();
     }
 
     /**
@@ -50,7 +50,7 @@ export class UserService {
      */
     getUserbyToken(jwt: string) {
         let httpHeaders = new HttpHeaders();
-        httpHeaders = httpHeaders.append("Authorization", "Bearer " + jwt);
+        httpHeaders = httpHeaders.append("Authorization", "Bearer " + jwt).append("Authorization", "Basic " + btoa(environment.gatewayUser +':'+environment.gatewayPassword));
         return this.httpClient.get(this.url + 'User/byToken/' + jwt,
             { headers: httpHeaders });
     }

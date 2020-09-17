@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { GatewaySecurityService } from './gateway-security.service';
 
 
 @Injectable()
 export class PaymentService {
 
-    private url:String = environment.urlPayment;
+    private url:String = environment.urlAPI + environment.paymentMicroservice;
 
-    constructor(private httpClient: HttpClient){
+    constructor(private httpClient: HttpClient, private header: GatewaySecurityService){
     }
 
     addPayment(data: any, funding: string, bookingId :number){
         var extractedData = this.extractDataFromPaypal(data, funding, bookingId);
-        return this.httpClient.post(this.url + "Payment/add", extractedData);
+        return this.httpClient.post(this.url + "Payment/add", extractedData, this.header.getHeaderAuthorization());
     }
 
     extractDataFromPaypal(data, funding, bookingId): any{

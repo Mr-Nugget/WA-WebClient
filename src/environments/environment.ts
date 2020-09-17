@@ -4,10 +4,13 @@
 
 export const environment = {
   production: false,
-  urlTrip: "http://localhost:9090/",
-  urlUser: "http://localhost:10090/",
-  urlBooking: "http://localhost:11090/",
-  urlPayment: "http://localhost:12090/"
+  urlAPI: "http://localhost:9004/",
+  paymentMicroservice: "payment-microservice/",
+  userMicroservice: "user-microservice/",
+  tripMicroservice: "trip-microservice/",
+  bookingMicroservice: "booking-microservice/",
+  gatewayUser: "WildAdventure",
+  gatewayPassword:"QVn5$QvrpYh$4nX2uy9"
 };
 
 /*

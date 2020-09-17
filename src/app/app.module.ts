@@ -40,6 +40,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CommentComponent } from './comment/comment.component';
 import { CommentService } from './services/comment.service';
 import { CommentSuccessComponent } from './comment-success/comment-success.component';
+import { GatewaySecurityService } from './services/gateway-security.service';
 
 
 
@@ -88,7 +89,8 @@ import { CommentSuccessComponent } from './comment-success/comment-success.compo
     CartService,
     BookingService,
     PaymentService,
-    CommentService
+    CommentService,
+    GatewaySecurityService
   ],
   bootstrap: [AppComponent]
 })

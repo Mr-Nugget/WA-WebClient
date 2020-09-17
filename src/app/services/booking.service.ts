@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { GatewaySecurityService } from './gateway-security.service';
 
 
 @Injectable()
 export class BookingService {
 
-    private url:String = environment.urlBooking;
+    private url:String = environment.urlAPI + environment.bookingMicroservice;
 
-    constructor(private httpClient: HttpClient){
+    constructor(private httpClient: HttpClient, private header: GatewaySecurityService){
     }
 
     async createReservation(cart: any){
@@ -19,10 +20,10 @@ export class BookingService {
             payed: false,
             userId: cart['userId'],
             tripId: cart['tripId']
-        }).toPromise();
+        }, this.header.getHeaderAuthorization()).toPromise();
     }
 
     getBookingsOfUser(userId: number){
-        return this.httpClient.get(this.url + "Booking/byUser/" + userId);
+        return this.httpClient.get(this.url + "Booking/byUser/" + userId, this.header.getHeaderAuthorization());
     }
 }
