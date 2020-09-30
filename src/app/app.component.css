@@ -1,7 +1,60 @@
-header{
-    height: 100px;
-    background-color: burlywood;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 50px;
-    color: crimson;
     text-align: center;
+    -moz-box-shadow: 0px -4px 12px 0px #656565;
+    -webkit-box-shadow: 0px -4px 12px 0px #656565;
+    -o-box-shadow: 0px -4px 12px 0px #656565;
+    box-shadow: 0px -4px 12px 0px #656565;
+    padding: 15px;
+    height: 100px;
+}
+
+.appName{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.781);
+    display: flex;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+}
+
+h1{
+    margin-bottom: 0px;
+}
+
+.appName img{
+    height: 85px;
+    margin-right: 20px;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+
+}
+
+button{
+    height: 100px;
+}
+
+.btn-submenu{
+    height: 50px;
+    color: white;
+}
+
+#accountBtn{
+    margin-left: 30px;
+    padding-left: 30px;
+    border-left: 1px solid #c3c3c3;
+}
+
+#accountBtn span{
+    margin-left: 10px;
+    margin-right: 10px;
 }

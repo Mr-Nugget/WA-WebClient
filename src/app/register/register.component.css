@@ -1,0 +1,45 @@
+.main{
+    padding-bottom: 0;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin-top: 50px;
+    border: solid 1px #c3c3c3;
+}
+
+.title{
+    margin-bottom: 15px;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+.names{
+    display: flex;
+    justify-content: space-between;
+}
+
+#connectionForm{
+    width: 50%;
+}
+
+.submitGrp{
+    display: flex;
+    justify-content: center;
+}
+
+.redirect{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.greeting{
+    font-size: 20px;
+    text-align: center;
+}

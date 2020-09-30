@@ -1,0 +1,36 @@
+<div class="main">
+    <div class="content">
+        <div class="title">
+            <h1>Confirmation de votre commande</h1>
+        </div>
+        <!-- Commande validée -->
+        <div *ngIf="isOk" class="confirmMessage">
+            <div>
+                <fa-icon [icon]="faCheckCircle"></fa-icon> Félicitations votre réservation a bien été enregistrée !
+            </div>
+        </div>
+        <div *ngIf="isOk" class="recap">
+            <div class="title">
+                <h3>Récapitulatif de commande</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Numéro de commande : {{ booking.id }}</li>
+                <li class="list-group-item">Voyage : {{ tripInstance.trip.label }}</li>
+                <li class="list-group-item">Dates : Du {{tripInstance.beginDate | date:'dd/MM/yyyy' }} au {{tripInstance.endDate | date:'dd/MM/yyyy' }}</li>
+                <li class="list-group-item">Nombre de personnes : {{ booking.nbPerson }}</li>
+            </ul>
+        </div>
+        <!-- Erreur lors de la commande -->
+        <div *ngIf="!isOk" class="errorMessage">
+            <div>
+                <fa-icon [icon]="faExclamationCircle"></fa-icon> Une erreur s'est produite lors de la réservation de votre voyage...
+            </div>
+        </div>
+        <div class="errorInfo" *ngIf="!isOk">
+            <p>Veuillez cliquer sur mes réservations pour confirmer la commande</p>
+        </div>
+        <div class="backButton">
+            <button class="btn btn-success" routerLink="/myBookings">Mes réservations</button>
+        </div>
+    </div>
+</div>

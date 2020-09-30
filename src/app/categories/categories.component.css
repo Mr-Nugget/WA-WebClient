@@ -1,0 +1,33 @@
+.main{
+    height: 600px;
+}
+
+h2{
+    font-size: 30px;
+}
+
+p{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+.categoriesList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 70px;
+    grid-auto-rows: minmax(100px, auto);
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 30px;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    border: solid 1px #c3c3c3;
+}

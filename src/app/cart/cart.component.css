@@ -1,0 +1,29 @@
+.subtitle{
+    text-align: center;
+}
+
+h3{
+    font-style: italic;
+}
+
+.cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 360px;
+    font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: solid 1px rgba(104, 104, 104, 0.651);
+}
+
+.cart img{
+    width: 250px;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

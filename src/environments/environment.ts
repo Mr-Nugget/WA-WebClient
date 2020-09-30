@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlAPI: "http://localhost:9004/",
+  paymentMicroservice: "payment-microservice/",
+  userMicroservice: "user-microservice/",
+  tripMicroservice: "trip-microservice/",
+  bookingMicroservice: "booking-microservice/",
+  gatewayUser: "WildAdventure",
+  gatewayPassword:"QVn5$QvrpYh$4nX2uy9"
 };
 
 /*

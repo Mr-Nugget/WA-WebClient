@@ -1,0 +1,31 @@
+<div class="main">
+    <div class="content">
+        <div class="title">
+            <h1>Mon panier</h1>
+        </div>
+        <div *ngIf="isEmpty" class="subtitle">
+            <p>Votre panier est vide... Cliquer sur catégorie pour y ajouter un voyage ;-)</p>
+        </div>
+        <div *ngIf="!isEmpty" class="subtitle">
+            <h3>Récapitulatif de votre commande</h3>
+        </div>
+        <div *ngIf="!isEmpty" class="cart">
+            <div>
+                <strong>Voyage :</strong> {{ cart.instance.trip.label }}
+            </div>
+            <img src="{{cart.instance.trip.imagePath}}" alt="">
+            <div>
+                <strong>Nombre de personne :</strong> {{ cart.nbPerson }}
+            </div>
+            <div>
+                <strong>Prix Total :</strong> {{ cart.totalPrice }} € TTC
+            </div>
+        </div>
+        <div *ngIf="!isEmpty" class="submit">
+            <button class="btn btn-success" (click)="payment()">Valider le panier</button>
+        </div>
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Chargement...</p>
+</ngx-spinner>

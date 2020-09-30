@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
@@ -89,6 +90,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -122,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "WAWebClient"
+  "defaultProject": "WAWebClient",
+  "cli": {
+    "analytics": "628e62c4-00f5-4b6c-a3e8-4b818164c078"
+  }
 }

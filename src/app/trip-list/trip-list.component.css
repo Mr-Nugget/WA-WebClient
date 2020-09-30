@@ -1,0 +1,50 @@
+.content{
+    height: inherit;
+    opacity: 1;
+}
+
+.title{
+    position: relative;
+}
+
+#backButton{
+    position: absolute;
+    left: 15px;
+    top: -45px;
+}
+
+h2{
+    font-size: 30px;
+}
+
+.listTrip{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.trip{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    border-bottom: solid 1px #C3C3C3;
+    width: 80%;
+}
+
+.trip img{
+    width: 400px;
+    margin-bottom: 30px;
+}
+
+.trip h4{
+    font-size: 20px;
+}
+
+button{
+    margin-top: 30px;
+}

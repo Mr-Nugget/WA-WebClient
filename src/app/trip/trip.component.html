@@ -1,0 +1,66 @@
+<div class="main">
+    <div class="content">
+        <div class="trip">
+            <div class="title">
+                <h3>{{ trip.label }}</h3>
+            </div>
+            <div class="imageAndTexte">
+                <img src="{{ trip.imagePath }}" alt="">
+                <div class="text">
+                    <p>{{ trip.description }} </p>
+                </div>
+                
+            </div>
+            <div class="destination">
+                <span>Destination : {{ trip.destination }}</span>
+            </div>
+            <div *ngIf="dates.length > 0" class="price">
+                <span>Prix : {{ price | currency:'EUR':'' }} € TTC/ personne</span>
+            </div>
+            <div class="tripInstances">
+                <form *ngIf="dates.length > 0" [formGroup]="reservationForm" (ngSubmit)="reservationSubmit()">
+                    <div class="form-group">
+                        <label for="tripInstances">Dates disponibles : </label>
+                        <select class="form-control" #mySelect name="Dates" id="tripInstances"
+                            (change)='onOptionsSelected(mySelect.value)' formControlName="dates" [(ngModel)]="defaultSelect">
+                            <option *ngFor="let date of dates; let i = index" value="{{ i }}" [selected]="i==0">Du
+                                {{ date.beginDate | date:'dd/MM/yyyy' }}
+                                au {{ date.endDate | date:'dd/MM/yyyy' }} - {{ trip.maxPerson - date.currentPerson  }}
+                                places</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success">
+                            Réserver
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div *ngIf="dates.length == 0" class="notAvailable">
+                Ce voyage n'est pas disponible pour le moment...
+            </div>
+            <div *ngIf="comments.length > 0" class="commentContent">
+                <div class="title">
+                    <h4>Commentaires</h4>
+                </div>
+                <div id="commentList">
+                    <div *ngFor="let comment of comments" class="comment">
+                        <div class="user">
+                            {{ comment.username }}
+                        </div>
+                        <div class="date">
+                            Avis posté le {{ comment.date | date:'dd/MM/yyyy' }}
+                        </div>
+                        <div class="message">
+                            {{ comment.content }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="comments.length == 0">
+                Il n'y a pas encore de commentaires sur ce voyage...
+            </div>
+            
+        </div>
+    </div>
+</div>

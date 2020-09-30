@@ -1,5 +1,41 @@
 <header class="container-fluid">
-  <div>
-    Wild Adventure
+  <div class="appName" [routerLink]="'/'">
+    <img src="../assets/logo-buffle.png" alt="">
+    <div class="title">
+      <h1>Wild Adventure</h1>
+    </div>
+  </div>
+  <!-- Menu not connected mode-->
+  <div *ngIf="!isAuth" class="menu">
+    <button class="btn" [routerLink]="'/'">Accueil</button>
+    <button class="btn" [routerLink]="'/categories'">Catégories</button>
+    <button class="btn" id="accountBtn" mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faUserCircle"></fa-icon><span>Mon compte</span></button>
+    <mat-menu id="authMenu" #menu="matMenu">
+      <button class="btn btn-submenu" mat-menu-item routerLink="/login">
+        <span>Se connecter</span>
+      </button>
+      <button class="btn btn-submenu" mat-menu-item routerLink="/register">
+        <span>Créer un compte</span>
+      </button>
+    </mat-menu>
+  </div>
+  <!-- Menu connected mode -->
+  <div *ngIf="isAuth" class="menu">
+    <button class="btn" [routerLink]="'/'">Accueil</button>
+    <button class="btn" [routerLink]="'/categories'">Catégories</button>
+    <button class="btn" [routerLink]="'/cart'"><fa-icon [icon]="faShoppingCart"></fa-icon> Panier</button>
+    <button class="btn" id="accountBtn" mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faUserCircle"></fa-icon><span>{{user.firstname}} {{user.lastname}}</span><fa-icon [icon]="faSortDown"></fa-icon></button>
+    <mat-menu id="accountMenu" #menu="matMenu">
+      <button class="btn btn-submenu" mat-menu-item routerLink="/myBookings">
+        <span>Mes réservations</span>
+      </button>
+      <button class="btn btn-submenu" mat-menu-item (click)="logout()">
+        <span>Se déconnecter</span>
+      </button>
+    </mat-menu>
   </div>
 </header>
+<router-outlet></router-outlet>
+<footer>
+
+</footer>
