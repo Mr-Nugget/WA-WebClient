@@ -1,5 +1,34 @@
 # Wild Adventure - Client Web
 
+## Pré-requis
+
+Pour deployer le projet en local, assurez-vous d'avoir Node.JS d'installé sur votre machine, ainsi que la dernière version du client Angular : 
+node.JS : https://nodejs.org/en/download/
+CLI Angular : https://cli.angular.io/
+
+## Déploiement en local
+
+Lors de la première utilisation, exécutez cette commande à la base du projet :
+```bash
+npm install
+```
+Pour démarrer l'application, executez la commande :
+```bash
+ng serve
+```
+Rendez-vous ensuite à l'adresse : http://localhost:4200/
+
+## Configuratino de l'API Paypal 
+
+Retrouvez la configuration Paypal dans le component "payment" de l'application.
+
+## Dépendances
+
+- Bootstrap
+- Google Material Design
+- Paypal API
+
+
 ## Présentation
 
 Ce projet est le front-end de l'application Wild Adventure.
@@ -12,13 +41,6 @@ Dans le package services de l'application, nous retrouvons le code spécifiques 
 
 Le routage des vues se fait dans le package "app-routing" qui définit l'URL associé à chaque vue et les données transmises lors de la navigation. 
 Certaines vues sont gardées via une authentification par token JWT stocké en mémoire dans les cookies de l'application et généré via microservice permettant l'authentification d'un utilisateur.
-
-## Déploiement
-
-Pour deployer le projet en local, assurez-vous d'avoir Node.JS d'installé sur votre machine, ainsi que la dernière version du client Angular.
-Lors de la première utilisation, exécutez la commande `npm install` à la base du projet.
-
-Exécutez ensuite la commande `ng serve` pour démarrer l'application, puis rendez-vous à l'adresse par défaut : `http://localhost:4200/`
 
 
 
